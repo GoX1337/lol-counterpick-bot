@@ -1,0 +1,23 @@
+{
+  "name": "lol-counterpick-bot",
+  "version": "1.0.0",
+  "description": "Discord bot controlled by commands to get League of Legends champions counter pick",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoX1337/lol-counterpick-bot.git"
+  },
+  "author": "GoX1337",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoX1337/lol-counterpick-bot/issues"
+  },
+  "homepage": "https://github.com/GoX1337/lol-counterpick-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0"
+  }
+}
