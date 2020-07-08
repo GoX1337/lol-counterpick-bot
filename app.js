@@ -29,7 +29,7 @@ client.on('message', async message => {
     const command = args.shift().toLowerCase();
     console.log(`command: ${command}, args`, args);
 
-    if (command === 'help') {
+    if (command === 'h') {
 		message.channel.send(`${helpChampionCommand}\n${helpCounterCommand}`);
 	} else if (command === 'champions' || command === 'champs') {
         const criteria = args.length > 0 ? args[0] : null;
@@ -47,6 +47,6 @@ client.on('message', async message => {
         }
 		message.channel.send(msg);
 	} else {
-        message.channel.send("Unknown command. Try !help.");
+        message.channel.send("Unknown command. Try !h.");
     }
 });
