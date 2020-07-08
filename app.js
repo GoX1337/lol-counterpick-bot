@@ -30,11 +30,11 @@ client.on('message', async message => {
 
     if (command === 'help') {
 		message.channel.send(`${helpChampionCommand}\n${helpCounterCommand}`);
-	} else if (command === 'champions') {
+	} else if (command === 'champions' || command === 'champs') {
         const criteria = args.length > 0 ? args[0] : null;
         const champions = await lol.getAllChampions(criteria);
 		message.channel.send(champions);
-    } else if (command === 'counter') {
+    } else if (command === 'counter' || command === 'cnt') {
         const champion = args.length > 0 ? args[0] : null;
         let msg;
         if(champion){
@@ -44,5 +44,7 @@ client.on('message', async message => {
             msg = "!counter: Missing champion name !";
         }
 		message.channel.send(msg);
-	} 
+	} else {
+        message.channel.send("Unknown command. Try !help.");
+    }
 });
