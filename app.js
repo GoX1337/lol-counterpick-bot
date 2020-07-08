@@ -6,7 +6,7 @@ const client = new Discord.Client();
 client.login(process.env.DISCORD_TOKEN);
 const prefix = "!";
 const helpChampionCommand = "!champions <criteria> : Get all champions (optional criteria is champion name substring)";
-const helpCounterCommand = "!counter <champion_name> : Get all counter picks of the given champion"
+const helpCounterCommand = "!counter <champion_name> [lane] : Get all counter picks of the given champion on lane"
 
 client.once('ready', () => {
 	console.log(`${client.user.tag} discord bot is ready.`);
@@ -27,6 +27,7 @@ client.on('message', async message => {
     }
 	const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
+    console.log(`command: ${command}, args`, args);
 
     if (command === 'help') {
 		message.channel.send(`${helpChampionCommand}\n${helpCounterCommand}`);
@@ -36,9 +37,10 @@ client.on('message', async message => {
 		message.channel.send(champions);
     } else if (command === 'counter' || command === 'cnt') {
         const champion = args.length > 0 ? args[0] : null;
+        const lane = args.length > 1 ? args[1] : null;
         let msg;
         if(champion){
-            const counters = await lol.getAllCounters(champion);
+            const counters = await lol.getAllCounters(champion, lane);
             msg = counters;
         } else {
             msg = "!counter: Missing champion name !";
