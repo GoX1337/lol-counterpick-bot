@@ -24,7 +24,7 @@ module.exports.getAllChampions = async (criteria) => {
     }
 }
 
-module.exports.getAllCounters = async (champion, lane) => {
+module.exports.getAllCounters = async (champion, lane, count) => {
     try {
         let response = await axios.get(url + "/league-of-legends/" + champion);
         const $ = cheerio.load(response.data);
@@ -37,7 +37,7 @@ module.exports.getAllCounters = async (champion, lane) => {
             counters += "**" + title.trim() + "**\n";
 
             $(div).find(".champ-box").first().find("a").each((i, a) => {
-                if(i === 10){
+                if(i === count){
                     return false;
                 }
                 let percent = $(a).find(".percentage").text();

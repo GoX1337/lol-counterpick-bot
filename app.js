@@ -38,9 +38,10 @@ client.on('message', async message => {
     } else if (command === 'counter' || command === 'cnt') {
         const champion = args.length > 0 ? args[0] : null;
         const lane = args.length > 1 ? args[1] : null;
+        const count = args.length > 2 ? parseInt(args[2]) : 10;
         let msg;
         if(champion){
-            const counters = await lol.getAllCounters(champion, lane);
+            const counters = await lol.getAllCounters(champion, lane, count);
             msg = counters;
         } else {
             msg = "!counter: Missing champion name !";
