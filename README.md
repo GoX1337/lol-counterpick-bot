@@ -1,4 +1,4 @@
-# Discord bot to get League of legends counter pick information
+# Discord bot to get League of legends counter pick information from https://www.counterstats.net
 
 ## Commands :
 
